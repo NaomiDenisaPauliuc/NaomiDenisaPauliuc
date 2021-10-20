@@ -1,0 +1,29 @@
+protected override void OnUpdateFrame(FrameEventArgs e)
+        {
+            base.OnUpdateFrame(e);
+            KeyboardState keyboard = Keyboard.GetState();
+            MouseState mouse = Mouse.GetState();
+            if (keyboard[Key.A])
+            {  
+                GL.Translate(0, 0, 7);
+            }
+            if (keyboard[Key.S])
+            {  
+                GL.Translate(0, 0, -7);
+            }
+            if (mouse[OpenTK.Input.MouseButton.Right])
+            {
+                if (mouse.T>100) 
+                {
+                    Resize(scaleVar*1.7, scaleVar*1.7);
+                }
+                if (mouse.T<100) 
+                {
+                    Resize(scaleVar/1.7, scaleVar/1.7);
+                }
+            }
+            if (keyboard[Key.Q])
+            {
+                Exit();
+            }
+        }
